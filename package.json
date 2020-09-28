@@ -1,0 +1,31 @@
+{
+  "name": "verus-pay-utils",
+  "version": "2.0.0",
+  "description": "Utility functions for creating and reading VerusPay v2 payment requests.",
+  "main": "build/index.js",
+  "repository": "https://github.com/michaeltout/verus-pay-utils.git",
+  "author": "Michael Filip Toutonghi",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest src",
+    "build": "babel src -d build",
+    "coverage": "jest --collectCoverageFrom=src/**.js --coverage src"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.0",
+    "verus-zkedid-utils": "https://github.com/michaeltout/verus-zkedid-utils#dev"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^22.21.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0"
+  }
+}
