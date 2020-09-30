@@ -28,14 +28,41 @@ module.exports = {
         INVALID_SM_PARAMS
       );
     
-    const { currency_id, amount, decimals, currency_import, note } = request.payload
-    const amountBn = new BigNumber(amount).dividedBy(new BigNumber(10).exponentiatedBy(new BigNumber(decimals)))
+    let {
+      currency_id,
+      system_id,
+      display_name,
+      display_ticker,
+      currency_import_signature,
+      currency_import_signer,
+      amount,
+      currency_import,
+      note,
+    } = request.payload;
+
+    let overloads = {
+      currency_id,
+      system_id,
+      display_name,
+      display_ticker
+    };
 
     let currencyImport = null
 
     if (currency_import.length > 0) {
       try {
         currencyImport = VerusZkedidUtils.StructuredCurrencyImport.readImport(currency_import)
+        
+        if (currencyImport.objects[0] != null) {
+          Object.keys(overloads).forEach(key => {
+            if (
+              currencyImport.objects[0][key] &&
+              currencyImport.objects[0][key].length > 0
+            ) {
+              overloads[key] = currencyImport.objects[0][key];
+            }
+          })
+        }
       } catch(e) {
         console.warn("Could not decode currency import, ignoring.")
       }
@@ -43,8 +70,10 @@ module.exports = {
     
     return {
       version: request.version,
-      currency_id,
-      amount: amountBn.toString(),
+      ...overloads,
+      currency_import_signature,
+      currency_import_signer,
+      amount,
       currency_import: currencyImport,
       note
     }

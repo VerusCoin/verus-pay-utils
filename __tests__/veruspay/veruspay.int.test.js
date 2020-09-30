@@ -1,15 +1,6 @@
 const { readRequest, writeRequest, getCoinObj } = require('../../src/index');
-const { compress } = require('../../src/utils/compress');
 const {
   getRequestParams,
-  NO_IMPORT_NO_COMPRESS_NO_NOTE_REQUEST,
-  NO_IMPORT_NO_COMPRESS_NOTE_REQUEST,
-  NO_IMPORT_COMPRESS_NOTE_REQUEST,
-  NO_IMPORT_COMPRESS_NO_NOTE_REQUEST,
-  IMPORT_NO_COMPRESS_NO_NOTE_REQUEST,
-  IMPORT_NO_COMPRESS_NOTE_REQUEST,
-  IMPORT_COMPRESS_NO_NOTE_REQUEST,
-  IMPORT_COMPRESS_NOTE_REQUEST,
   TEST_IMPORT_COIN_OBJ
 } = require("../utils/constants");
 
@@ -21,13 +12,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request)
 
-    expect(request).toEqual(NO_IMPORT_NO_COMPRESS_NO_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
-      amount: requestObj.amount
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
     }).toEqual(params.json)
   })
 
@@ -36,13 +33,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request)
 
-    expect(request).toEqual(NO_IMPORT_NO_COMPRESS_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
-      amount: requestObj.amount
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
     }).toEqual(params.json)
   })
 
@@ -51,13 +54,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request, true)
 
-    expect(request).toEqual(NO_IMPORT_COMPRESS_NO_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
-      amount: requestObj.amount
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
     }).toEqual(params.json)
   })
 
@@ -66,13 +75,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request, true)
 
-    expect(request).toEqual(NO_IMPORT_COMPRESS_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
-      amount: requestObj.amount
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
     }).toEqual(params.json)
   })
 
@@ -81,13 +96,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request)
 
-    expect(request).toEqual(IMPORT_NO_COMPRESS_NO_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
-      amount: requestObj.amount
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
     }).toEqual(params.json)
   })
 
@@ -96,13 +117,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request)
 
-    expect(request).toEqual(IMPORT_NO_COMPRESS_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
-      amount: requestObj.amount
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
     }).toEqual(params.json)
   })
 
@@ -111,13 +138,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request, true)
 
-    expect(request).toEqual(IMPORT_COMPRESS_NO_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
-      amount: requestObj.amount
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
     }).toEqual(params.json)
   })
 
@@ -126,13 +159,19 @@ describe('VerusPay payment request read/write testing.', () => {
     const request = writeRequest(...params.params)
     const requestObj = readRequest(request, true)
 
-    expect(request).toEqual(IMPORT_COMPRESS_NOTE_REQUEST)
     expect({
       currency_id: requestObj.currency_id,
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
-      amount: requestObj.amount
-    }).toEqual(params.json)
+      amount: requestObj.amount,
+      signatureObj: {
+        signer: requestObj.currency_import_signer,
+        signature: requestObj.currency_import_signature,
+      },
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
+    }).toEqual(params.json);
   })
 })
