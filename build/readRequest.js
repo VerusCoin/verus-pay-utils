@@ -1,7 +1,3 @@
-const {
-  default: BigNumber
-} = require('bignumber.js');
-
 const VerusZkedidUtils = require('verus-zkedid-utils');
 
 const {
@@ -34,7 +30,8 @@ module.exports = {
       currency_import_signer,
       amount,
       currency_import,
-      note
+      note,
+      destination
     } = request.payload;
     let overloads = {
       currency_id,
@@ -65,6 +62,7 @@ module.exports = {
       ...overloads,
       currency_import_signature,
       currency_import_signer,
+      destination,
       amount,
       currency_import: currencyImport,
       note

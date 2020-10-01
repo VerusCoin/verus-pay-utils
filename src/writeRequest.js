@@ -17,6 +17,7 @@ module.exports = {
     system_id,
     display_name,
     display_ticker,
+    destination,
     amount,
     coinObj = null,
     signatureObj,
@@ -44,6 +45,7 @@ module.exports = {
         overrides.system_id,
         overrides.display_name,
         overrides.display_ticker,
+        destination,
         amount,
         coinObj != null
           ? VerusZkedidUtils.StructuredCurrencyImport.writeImport([coinObj])

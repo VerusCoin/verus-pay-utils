@@ -17,6 +17,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,
@@ -38,6 +39,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,
@@ -59,6 +61,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,
@@ -80,6 +83,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import,
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,
@@ -101,6 +105,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,
@@ -122,6 +127,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,
@@ -143,6 +149,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,
@@ -164,6 +171,7 @@ describe('VerusPay payment request read/write testing.', () => {
       note: requestObj.note,
       coinImport: requestObj.currency_import.objects[0],
       note: requestObj.note,
+      destination: requestObj.destination,
       amount: requestObj.amount,
       signatureObj: {
         signer: requestObj.currency_import_signer,

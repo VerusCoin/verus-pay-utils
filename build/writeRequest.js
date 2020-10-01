@@ -15,7 +15,7 @@ module.exports = {
    * @param {Boolean} compressResult Whether or not to compress the output (lossless), for use in mediums like QR codes. This
    * will most likely add non-ASCII characters
    */
-  writeRequest: function (currency_id, system_id, display_name, display_ticker, amount, coinObj = null, signatureObj, note = "", compressResult = false) {
+  writeRequest: function (currency_id, system_id, display_name, display_ticker, destination, amount, coinObj = null, signatureObj, note = "", compressResult = false) {
     let overrides = {
       currency_id,
       system_id,
@@ -31,7 +31,7 @@ module.exports = {
       });
     }
 
-    const result = VerusZkedidUtils.VerusLink.writeLink([VerusZkedidUtils.PresetObjects.VerusPaymentRequest.create(overrides.currency_id, overrides.system_id, overrides.display_name, overrides.display_ticker, amount, coinObj != null ? VerusZkedidUtils.StructuredCurrencyImport.writeImport([coinObj]) : null, signatureObj, note)]);
+    const result = VerusZkedidUtils.VerusLink.writeLink([VerusZkedidUtils.PresetObjects.VerusPaymentRequest.create(overrides.currency_id, overrides.system_id, overrides.display_name, overrides.display_ticker, destination, amount, coinObj != null ? VerusZkedidUtils.StructuredCurrencyImport.writeImport([coinObj]) : null, signatureObj, note)]);
     return compressResult ? compress(result) : result;
   }
 };

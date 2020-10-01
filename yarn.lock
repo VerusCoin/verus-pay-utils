@@ -4694,7 +4694,7 @@ verror@1.10.0:
 
 "verus-zkedid-utils@https://github.com/michaeltout/verus-zkedid-utils#dev":
   version "1.0.0"
-  resolved "https://github.com/michaeltout/verus-zkedid-utils#0bf80522dc3706c2346027f0412deda491d228cf"
+  resolved "https://github.com/michaeltout/verus-zkedid-utils#32a90726e6e3ade537914f7e679a608d62a3346d"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
