@@ -182,4 +182,41 @@ describe('VerusPay payment request read/write testing.', () => {
       display_ticker: requestObj.display_ticker,
     }).toEqual(params.json);
   })
+
+  it('Can create and read VerusPay request with missing parameters', () => {  
+    const params = {
+      params: [
+      null,
+      "i5w5MuNik5NtLcYmNzcvaoixooEebB6MGV",
+      "Verus Coin",
+      "VRSC",
+      "RJqTq1SZ85WkTs9yBu18kmGxXkVU3AwcEA",
+      "2",
+      null,
+      null,
+      null,
+      true,
+    ],
+    json: {
+      system_id: 'i5w5MuNik5NtLcYmNzcvaoixooEebB6MGV',
+      currency_id: '',
+      display_name: "Verus Coin",
+      display_ticker: "VRSC",
+      destination: "RJqTq1SZ85WkTs9yBu18kmGxXkVU3AwcEA",
+      amount: "2",
+      note: ''
+    }}
+    const request = writeRequest(...params.params)
+    const requestObj = readRequest(request, true)
+    
+    expect({
+      currency_id: requestObj.currency_id,
+      note: requestObj.note,
+      destination: requestObj.destination,
+      amount: requestObj.amount,
+      system_id: requestObj.system_id,
+      display_name: requestObj.display_name,
+      display_ticker: requestObj.display_ticker,
+    }).toEqual(params.json);
+  })
 })
