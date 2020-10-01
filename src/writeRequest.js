@@ -23,12 +23,27 @@ module.exports = {
     note = "",
     compressResult = false
   ) {
+    let overrides = {
+      currency_id,
+      system_id,
+      display_name,
+      display_ticker
+    }
+
+    if (coinObj != null) {
+      Object.keys(coinObj.data['structured_coin_object:vrsc'].data).map(key => {
+        if (overrides[key] != null) {
+          overrides[key] = ''
+        }
+      })
+    }
+
     const result = VerusZkedidUtils.VerusLink.writeLink([
       VerusZkedidUtils.PresetObjects.VerusPaymentRequest.create(
-        currency_id,
-        system_id,
-        display_name,
-        display_ticker,
+        overrides.currency_id,
+        overrides.system_id,
+        overrides.display_name,
+        overrides.display_ticker,
         amount,
         coinObj != null
           ? VerusZkedidUtils.StructuredCurrencyImport.writeImport([coinObj])
